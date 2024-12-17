@@ -1,0 +1,22 @@
+name-template: 'Release ${{ tag_name }}'
+tag-template: '${{ tag_name }}'
+
+categories:
+  - title: 🚀 Features
+    labels:
+      - feature
+  - title: 🐛 Bug Fixes
+    labels:
+      - bugfix
+  - title: ⚠️ Deprecations
+    labels:
+      - deprecation
+  - title: 🧩 Others
+    labels:
+      - other
+
+change-template: '- $TITLE (#$NUMBER) by @$AUTHOR'
+no-changes-template: '- No changes'
+
+sort-by: 'merged_at'
+sort-direction: 'descending'
