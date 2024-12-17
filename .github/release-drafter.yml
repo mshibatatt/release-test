@@ -1,5 +1,5 @@
-name-template: 'Release ${{ tag_name }}'
-tag-template: '${{ tag_name }}'
+name-template: 'Release ${{ TAG_NAME }}'
+tag-template: '${{ TAG_NAME }}'
 
 categories:
   - title: 🚀 Features
@@ -8,6 +8,7 @@ categories:
   - title: 🐛 Bug Fixes
     labels:
       - 'bugfix'
+      - 'bug'
   - title: 🧩 Others
     labels:
       - other
