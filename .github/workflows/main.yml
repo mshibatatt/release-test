@@ -1,0 +1,51 @@
+name: Release Git-tag of poetry-managed package
+
+on:
+  pull_request:
+    branches: 
+      - main
+    types:
+      - closed
+
+jobs:
+  release:
+    if: >
+        github.event.pull_request.merged == true || 
+        github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Install Python
+        uses: actions/setup-python@v5
+      
+      - name: Install poetry
+        uses: abatilo/actions-poetry@v2
+      
+      - name: Get Poetry version
+        run: poetry --version
+      
+      # Made use of $GITHUB_ENV to pass the variable cleanly to subsequent steps.
+      - name: Fetch version info from pyproject.toml
+        run: |
+          echo "PYPROJECT_VERSION=1.0" >> $GITHUB_ENV
+          echo "The current pyproject version is v$PYPROJECT_VERSION"
+
+      
+      - name: Create Git Tag and GitHub release
+        run: |
+          TAG=$(git describe HEAD --tags --abbrev=0 2>/dev/null || echo "none")
+
+          if [[ "$TAG" != "v$PYPROJECT_VERSION" ]]; then
+            echo "Creating a new release with tag v$PYPROJECT_VERSION..."
+            gh release create "v"$PYPROJECT_VERSION --generate-notes
+          else
+            echo "Tag v$PYPROJECT_VERSION already exists. No release needed."
+          fi
+          
+        env:
+          GH_TOKEN: ${{ github.token }}
