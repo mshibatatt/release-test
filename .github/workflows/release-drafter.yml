@@ -1,0 +1,21 @@
+name: Release Drafter
+
+on:
+  push:
+    tags:
+      - 'v*' # vで始まるタグ
+    branches:
+      - main # mainブランチにプッシュされたもののみ
+
+jobs:
+  draft-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Generate Release Notes
+        uses: release-drafter/release-drafter@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
