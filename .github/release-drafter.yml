@@ -4,13 +4,10 @@ tag-template: '${{ tag_name }}'
 categories:
   - title: 🚀 Features
     labels:
-      - feature
+      - 'enhancement'
   - title: 🐛 Bug Fixes
     labels:
-      - bugfix
-  - title: ⚠️ Deprecations
-    labels:
-      - deprecation
+      - 'bugfix'
   - title: 🧩 Others
     labels:
       - other
@@ -18,5 +15,7 @@ categories:
 change-template: '- $TITLE (#$NUMBER) by @$AUTHOR'
 no-changes-template: '- No changes'
 
-sort-by: 'merged_at'
-sort-direction: 'descending'
+template: |
+  ## Changes
+
+  $CHANGES
