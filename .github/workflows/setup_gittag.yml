@@ -19,20 +19,11 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
-
-      - name: Install Python
-        uses: actions/setup-python@v5
-      
-      - name: Install poetry
-        uses: abatilo/actions-poetry@v2
-      
-      - name: Get Poetry version
-        run: poetry --version
       
       # Made use of $GITHUB_ENV to pass the variable cleanly to subsequent steps.
       - name: Fetch version info from pyproject.toml
         run: |
-          echo "PYPROJECT_VERSION=3.0" >> $GITHUB_ENV
+          echo "PYPROJECT_VERSION=3.1" >> $GITHUB_ENV
           echo "The current pyproject version is v$PYPROJECT_VERSION"
 
       
