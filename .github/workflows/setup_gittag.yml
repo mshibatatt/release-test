@@ -32,17 +32,20 @@ jobs:
       # Made use of $GITHUB_ENV to pass the variable cleanly to subsequent steps.
       - name: Fetch version info from pyproject.toml
         run: |
-          echo "PYPROJECT_VERSION=1.0" >> $GITHUB_ENV
+          echo "PYPROJECT_VERSION=2.0" >> $GITHUB_ENV
           echo "The current pyproject version is v$PYPROJECT_VERSION"
 
       
-      - name: Create Git Tag and GitHub release
+      - name: Create Git Tag
         run: |
           TAG=$(git describe HEAD --tags --abbrev=0 2>/dev/null || echo "none")
 
           if [[ "$TAG" != "v$PYPROJECT_VERSION" ]]; then
             echo "Creating a new release with tag v$PYPROJECT_VERSION..."
-            gh release create "v"$PYPROJECT_VERSION --generate-notes
+            git config --global user.name "github-actions"
+            git config --global user.email "github-actions@github.com"
+            git tag v$PYPROJECT_VERSION
+            git push origin v$PYPROJECT_VERSION
           else
             echo "Tag v$PYPROJECT_VERSION already exists. No release needed."
           fi
