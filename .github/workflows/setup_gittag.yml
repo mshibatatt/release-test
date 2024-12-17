@@ -32,7 +32,7 @@ jobs:
       # Made use of $GITHUB_ENV to pass the variable cleanly to subsequent steps.
       - name: Fetch version info from pyproject.toml
         run: |
-          echo "PYPROJECT_VERSION=2.0" >> $GITHUB_ENV
+          echo "PYPROJECT_VERSION=3.0" >> $GITHUB_ENV
           echo "The current pyproject version is v$PYPROJECT_VERSION"
 
       
