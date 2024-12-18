@@ -7,11 +7,10 @@ categories:
       - 'bugfix'
       - 'bug'
   - title: 🧩 Others
-    labels:
-      - other
 
 exclude-labels:
   - 'skip-changelog'
+publish: 'true'
 
 change-template: '- $TITLE by @$AUTHOR in (#$NUMBER)'
 no-changes-template: '- No changes'
