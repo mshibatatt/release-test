@@ -18,6 +18,6 @@ jobs:
       - name: Generate Release Notes
         uses: release-drafter/release-drafter@v6
         with:
-            tag: $GITHUB_REF_NAME
+            tag: ${{  github.ref_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
