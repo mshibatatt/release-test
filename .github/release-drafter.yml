@@ -1,11 +1,17 @@
 categories:
-  - title: 🚀 Features
+  - title: 🚀 Enhancement
     labels:
       - 'enhancement'
-  - title: 🐛 Bug Fixes
+  - title: 🐞 Bug fixes
     labels:
       - 'bugfix'
       - 'bug'
+  - title: 🍀 Environment
+    labels:
+      - 'env'
+  - title: 📝 Documentation
+    labels:
+      - 'documentation'
   - title: 🧩 Others
 
 exclude-labels:
