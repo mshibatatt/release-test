@@ -1,5 +1,5 @@
-name-template: 'Release $TAG_NAME'
-tag-template: '$TAG_NAME'
+name-template: 'Release $RESOLVED_VERSION'
+tag-template: '$RESOLVED_VERSION'
 
 categories:
   - title: 🚀 Features

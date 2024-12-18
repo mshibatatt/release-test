@@ -14,15 +14,10 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-        
-      - name: Extract Tag Name
-        id: get_tag
-        run: |
-          TAG_NAME=${GITHUB_REF#refs/tags/}  # refs/tags/v1.0.0 -> v1.0.0
-          echo "TAG_NAME=${TAG_NAME}" >> $GITHUB_ENV
-          echo "Tag name is ${TAG_NAME}"
           
       - name: Generate Release Notes
         uses: release-drafter/release-drafter@v6
+        with:
+            version: $GITHUB_REF_NAME
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
