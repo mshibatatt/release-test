@@ -6,6 +6,9 @@ categories:
     labels:
       - 'bugfix'
       - 'bug'
+  - title: 🚫 Deprecation
+    labels:
+      - 'deprecation'
   - title: 🍀 Environment
     labels:
       - 'env'
