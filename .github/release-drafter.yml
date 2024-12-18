@@ -1,5 +1,5 @@
-name-template: 'Release ${{ TAG_NAME }}'
-tag-template: '${{ TAG_NAME }}'
+name-template: 'Release $TAG_NAME'
+tag-template: '$TAG_NAME'
 
 categories:
   - title: 🚀 Features
@@ -13,10 +13,10 @@ categories:
     labels:
       - other
 
-change-template: '- $TITLE (#$NUMBER) by @$AUTHOR'
+change-template: '- $TITLE by @$AUTHOR in (#$NUMBER)'
 no-changes-template: '- No changes'
 
 template: |
-  ## Changes
+  ## What's Changed
 
   $CHANGES
