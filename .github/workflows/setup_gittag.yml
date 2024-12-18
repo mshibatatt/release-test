@@ -23,7 +23,7 @@ jobs:
       # Made use of $GITHUB_ENV to pass the variable cleanly to subsequent steps.
       - name: Fetch version info from pyproject.toml
         run: |
-          echo "PYPROJECT_VERSION=3.6" >> $GITHUB_ENV
+          echo "PYPROJECT_VERSION=4.0" >> $GITHUB_ENV
           echo "The current pyproject version is v$PYPROJECT_VERSION"
 
       
@@ -43,3 +43,12 @@ jobs:
           
         env:
           GH_TOKEN: ${{ github.token }}
+      
+      - name: Generate Release Notes
+        uses: release-drafter/release-drafter@v6
+        with:
+            tag: ${{ env.PYPROJECT_VERSION }}
+            name: ${{ env.PYPROJECT_VERSION }}
+            version: ${{ env.PYPROJECT_VERSION }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
