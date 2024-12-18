@@ -4,8 +4,6 @@ on:
   push:
     tags:
       - 'v*' # vで始まるタグ
-    branches:
-      - main # mainブランチにプッシュされたもののみ
 
 jobs:
   draft-release:
