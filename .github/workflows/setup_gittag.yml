@@ -23,7 +23,7 @@ jobs:
       # Made use of $GITHUB_ENV to pass the variable cleanly to subsequent steps.
       - name: Fetch version info from pyproject.toml
         run: |
-          echo "PYPROJECT_VERSION=5.0" >> $GITHUB_ENV
+          echo "PYPROJECT_VERSION=5.1" >> $GITHUB_ENV
           echo "The current pyproject version is v$PYPROJECT_VERSION"
 
       
@@ -34,7 +34,7 @@ jobs:
 
           if [[ "$TAG" != "v$PYPROJECT_VERSION" ]]; then
             echo "Creating a new release with tag v$PYPROJECT_VERSION..."
-            echo ::set-output name=version::$PYPROJECT_VERSION
+            echo "RELEASE_TAG=$PYPROJECT_VERSION" >> $GITHUB_ENV
           else
             echo "Tag v$PYPROJECT_VERSION already exists. No release needed."
           fi
@@ -47,9 +47,9 @@ jobs:
         if: ${{ steps.tag.outputs.version != ''}}
         uses: release-drafter/release-drafter@v6
         with:
-            tag: v${{ steps.tag.outputs.version }}
-            name: v${{ steps.tag.outputs.version }}
-            version: ${{ steps.tag.outputs.version }}
+            tag: v${{ env.RELEASE_TAG }}
+            name: v${{ env.RELEASE_TAG }}
+            version: ${{ env.RELEASE_TAG }}
             publish: true
         env:
           GITHUB_TOKEN: ${{ github.token }}
