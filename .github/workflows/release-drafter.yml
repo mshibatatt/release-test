@@ -16,8 +16,8 @@ jobs:
       - name: Generate Release Notes
         uses: release-drafter/release-drafter@v6
         with:
-            tag: ${{ github.ref_name }}
-            name: ${{ github.ref_name }}
+            tag: v${{ github.ref_name }}
+            name: v${{ github.ref_name }}
             version: ${{ github.ref_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
