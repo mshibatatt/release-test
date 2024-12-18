@@ -44,7 +44,7 @@ jobs:
 
       # run only if new tag should be created
       - name: Generate Release Notes
-        if: ${{ steps.tag.outputs.version != ''}}
+        if: ${{ env.RELEASE_TAG != ''}}
         uses: release-drafter/release-drafter@v6
         with:
             tag: v${{ env.RELEASE_TAG }}
