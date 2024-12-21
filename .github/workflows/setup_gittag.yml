@@ -18,12 +18,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
-          fetch-depth: 0
+          fetch-depth: 1
       
       # Made use of $GITHUB_ENV to pass the variable cleanly to subsequent steps.
       - name: Fetch version info from pyproject.toml
         run: |
-          echo "PYPROJECT_VERSION=5.1" >> $GITHUB_ENV
+          echo "PYPROJECT_VERSION=5.2" >> $GITHUB_ENV
           echo "The current pyproject version is v$PYPROJECT_VERSION"
 
       
